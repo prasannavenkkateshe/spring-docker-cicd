@@ -5,6 +5,7 @@ COPY pom.xml .
 COPY src ./src
 COPY mvnw .
 COPY .mvn .mvn
+RUN chmod +x mvnw
 RUN ./mvnw package -DskipTests
 
 # ── STAGE 2: Run the jar ──
