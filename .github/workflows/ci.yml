@@ -32,6 +32,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Wait for MySQL
+        run: |
+          sudo apt-get install -y mysql-client
+          until mysqladmin ping -h 127.0.0.1 -u root -proot --silent; do
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
+
       - name: Build and Test
         run: mvn clean test
         env:
