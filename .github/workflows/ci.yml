@@ -71,4 +71,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-docker-cicd:latest
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/spring-docker-cicd:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/spring-docker-cicd:${{ github.sha }}
